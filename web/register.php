@@ -26,7 +26,7 @@
 
 	echo $namecheckquery;
 
-	$namecheck = $conn->query($namecheckquery) or die("2: Username query failed"); //error code 2: name query fails
+	$namecheck = $con->query($namecheckquery) or die("2: Username query failed"); //error code 2: name query fails
 
 	echo $namecheck;
 
@@ -43,7 +43,7 @@
 	
 	echo $insertuserquery;
 
-	mysqli_query($con, $insertuserquery) or die("4: Insert user query failed"); //error code 4: insert query failed
+	$con->query($insertuserquery) or die("4: Insert user query failed"); //error code 4: insert query failed
 
 	echo ("0");
 ?>

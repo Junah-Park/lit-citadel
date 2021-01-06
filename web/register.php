@@ -26,7 +26,7 @@
 
 	echo $namecheckquery;
 
-	$namecheck = mysqli_query($con, $namecheckquery) or die("2: Username query failed"); //error code 2: name query fails
+	$namecheck = $conn->query($namecheckquery) or die("2: Username query failed"); //error code 2: name query fails
 
 	echo $namecheck;
 

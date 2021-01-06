@@ -25,9 +25,10 @@
 	$namecheckquery = "SELECT username FROM users WHERE username='" . $username . "';";
 
 	echo $namecheckquery;
-
-	$namecheck = $con->query($namecheckquery) or die("2: Username query failed"); //error code 2: name query fails
-
+	echo $con->query($namecheckquery);
+	$namecheck = $con->query($namecheckquery) or die("2: Username query failed"); 
+	//error code 2: name query fails
+	echo "echoing fails";
 	echo $namecheck;
 	echo "namecheck passes";
 

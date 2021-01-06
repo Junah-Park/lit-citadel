@@ -37,13 +37,13 @@
 	}
 
 	//add user to the table
-	$salt = "\$5\$rounds=5000\$" . "steamedhams" . $username . "\$";
-	$hash = crypt($password, $salt);
-	$insertuserquery = "INSERT INTO users (username, hash, salt) VALUES ('" . $username . "', '" . $hash . "', '" . $salt . "');";
+	// $salt = "\$5\$rounds=5000\$" . "steamedhams" . $username . "\$";
+	// $hash = crypt($password, $salt);
+	// $insertuserquery = "INSERT INTO users (username, hash, salt) VALUES ('" . $username . "', '" . $hash . "', '" . $salt . "');";
 	
-	echo $insertuserquery;
+	// echo $insertuserquery;
 
-	$con->query($insertuserquery) or die("4: Insert user query failed"); //error code 4: insert query failed
+	// $con->query($insertuserquery) or die("4: Insert user query failed"); //error code 4: insert query failed
 
 	echo ("0");
 ?>

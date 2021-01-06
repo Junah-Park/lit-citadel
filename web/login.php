@@ -1,6 +1,13 @@
 <?php
 
-	$con = mysqli_connect('localhost', 'root', 'root', 'unityaccess');
+	$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+	$server = $url["host"];
+	$username = $url["user"];
+	$password = $url["pass"];
+	$db = substr($url["path"], 1);
+
+	$conn = new mysqli($server, $username, $password, $db);
 
 	//validate connection
 	if(mysqli_connect_errno())
@@ -9,7 +16,7 @@
 		exit();
 	}
 
-	$username = mysqli_real_escape_string($con, $_POST["name"]);
+	$username = mysqli_real_escape_string($conn, $_POST["name"]);
 	//SQL injection prevention
 	$usernameclean = filter_var($username, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH);
 	$password = $_POST["password"];
@@ -17,7 +24,7 @@
 	//validate name
 	$namecheckquery = "SELECT id, username, salt, hash, score FROM users WHERE username='" . $usernameclean . "';";
 
-	$namecheck = mysqli_query($con, $namecheckquery) or die("2: Username query failed"); //error code 2: name query fails
+	$namecheck = mysqli_query($conn, $namecheckquery) or die("2: Username query failed"); //error code 2: name query fails
 
 	if(mysqli_num_rows($namecheck)!=1)
 	{

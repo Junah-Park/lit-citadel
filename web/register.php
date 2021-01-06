@@ -1,11 +1,17 @@
 <?php
-	$con = mysqli_connect('localhost', 'root', 'root', 'unityaccess');
+	$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
+	$server = $url["host"];
+	$username = $url["user"];
+	$password = $url["pass"];
+	$db = substr($url["path"], 1);
+
+	$conn = new mysqli($server, $username, $password, $db); 
 	//validate connection
 	if(mysqli_connect_errno())
 	{
-		echo "1: Connection failed"; //error code 1: connection failed
-		exit();
+	echo "1: Connection failed"; //error code 1: connection failed
+	exit();
 	}
 
 	$username = $_POST["name"];

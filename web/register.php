@@ -27,9 +27,9 @@
 	echo $namecheckquery;
 	$namecheck = mysqli_query($con, $namecheckquery) or die("2: Username query failed"); 
 	//error code 2: name query fails
-	echo "namecheck passes";
+	// echo "namecheck passes";
 
-	if($namecheck)
+	if(mysqli_num_rows($namecheck)>0)
 	{
 		echo "3: Username already exists"; //error code 3: name exists
 		exit();

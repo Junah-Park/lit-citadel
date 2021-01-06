@@ -16,7 +16,7 @@
     score INT(10) NOT NULL
     )";
 
-  echo "sql valid"
+  echo $sql;
 
   if ($conn->query($sql) === TRUE) {
     echo "Table users created successfully";

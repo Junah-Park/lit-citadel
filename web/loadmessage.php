@@ -1,6 +1,13 @@
 <?php
+	$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
-	$con = mysqli_connect('localhost', 'root', 'root', 'unityaccess');
+	$server = $url["host"];
+	$username = $url["user"];
+	$password = $url["pass"];
+	$db = substr($url["path"], 1);
+
+	$conn = new mysqli($server, $username, $password, $db);
+
 
 	//validate connection
 	if(mysqli_connect_errno())
@@ -15,7 +22,7 @@
 	//validate name
 	$messagecheckquery = "SELECT message FROM messages WHERE id=" . $id . ";";
 
-	$messagecheck = mysqli_query($con, $messagecheckquery) or die("8: Id query failed"); //error code 8: id query fails
+	$messagecheck = mysqli_query($conn, $messagecheckquery) or die("8: Id query failed"); //error code 8: id query fails
 
 	if(mysqli_num_rows($messagecheck)>1)
 	{

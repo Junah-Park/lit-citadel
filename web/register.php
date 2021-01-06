@@ -26,7 +26,7 @@
 
 	echo $namecheckquery;
 
-	$namecheck = $con->query($namecheckquery) or die("2: Username query failed"); //error code 2: name query fails
+	$namecheck = $con->query($namecheckquery) // or die("2: Username query failed"); //error code 2: name query fails
 
 	echo $namecheck;
 

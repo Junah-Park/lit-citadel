@@ -25,9 +25,8 @@
 	$namecheckquery = "SELECT username FROM users WHERE username='" . $username . "';";
 
 	echo $namecheckquery;
-	$namecheck = mysql_query($namecheckquery) or die("2: Username query failed"); 
+	$namecheck = mysqli_query($con, $namecheckquery) or die("2: Username query failed"); 
 	//error code 2: name query fails
-	echo $namecheck;
 	echo "namecheck passes";
 
 	if($namecheck)

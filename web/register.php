@@ -14,12 +14,12 @@
 		exit();
 	}
 
-	echo "21";
+	// echo "21";
 
 	$username = $_POST["name"];
 	$password = $_POST["password"];
 
-	echo $username;
+	// echo $username;
 
 	//validate name
 	$namecheckquery = "SELECT username FROM users WHERE username='" . $username . "';";
@@ -37,13 +37,13 @@
 	}
 
 	//add user to the table
-	// $salt = "\$5\$rounds=5000\$" . "steamedhams" . $username . "\$";
-	// $hash = crypt($password, $salt);
-	// $insertuserquery = "INSERT INTO users (username, hash, salt) VALUES ('" . $username . "', '" . $hash . "', '" . $salt . "');";
+	$salt = "\$5\$rounds=5000\$" . "steamedhams" . $username . "\$";
+	$hash = crypt($password, $salt);
+	$insertuserquery = "INSERT INTO users (username, hash, salt) VALUES ('" . $username . "', '" . $hash . "', '" . $salt . "');";
 	
-	// echo $insertuserquery;
+	echo $insertuserquery;
 
-	// $con->query($insertuserquery) or die("4: Insert user query failed"); //error code 4: insert query failed
+	$con->query($insertuserquery) or die("4: Insert user query failed"); //error code 4: insert query failed
 
 	echo "0";
 ?>
